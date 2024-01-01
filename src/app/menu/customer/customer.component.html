@@ -1,0 +1,76 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+            <c-card-header>
+                <strong>Customer <i class="fa-solid fa-user-group"></i> </strong>
+                <a class="btn btn-info btn-sm offset-9"(click)="showModal()" cButton >Add Customer</a>
+            </c-card-header>
+            <c-card-body>
+                <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+                    <thead cTableColor="light">
+                        <tr>
+                            <th class="text-center">S.NO</th>
+                            <th class="text-center">Customer Type </th>
+                            <th class="text-center">Account Number </th>
+                            <th class="text-center">Mobile Number</th>
+                            <th class="text-center">Plans </th>
+                            <th class="text-center">Start Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of customer; index as i">
+                            <td class="text-center" >{{ i+1 }}</td>
+                            <td class="text-center">{{ c.customerType }}</td>
+                            <td class="text-center">{{ c.accountNumber }}</td>
+                            <td class="text-center">{{ c.mobileNumber }}</td>
+                            <td class="text-center">{{ c.plans }}</td>
+                            <td class="text-center">{{ c.startDate |  date: 'dd/MM/yyyy' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
+<!-- modal -->
+
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="closeModal($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Add Customer</h5>
+    <button (click)="showModal()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <form cForm class="row g-3" [formGroup]="customerForm">
+      <c-col [md]="6">
+        <label cLabel for="customerType" cFormControl>Customer Type</label>
+        <select (change)="updatePlans($event)" cSelect formControlName="customerType">
+          <option value="">--Select--</option>
+          <option value="{{ct['id']}}" *ngFor="let ct of customerType">{{ct['name']}}</option>
+        </select>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="accountnumber">Account Number</label>
+        <input cFormControl type="text"  formControlName="accountNumber" placeholder="Enter the Account Number"/>
+      </c-col>
+      <c-col [md]="12">   
+        <label cFormControl cLabel for="plans">Plans</label>
+        <select cSelect formControlName="plans">
+          <option value="">--Select--</option>
+          <option value="{{fp['id']}}" *ngFor="let fp of filterPlans">{{fp['name']}}</option>
+        </select>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="mobileNumber">Mobile Nmber</label>
+        <input cFormControl type="text" placeholder="Enter the Mobile Number"  formControlName="mobileNumber" placeholder="Enter the Mobile Number"/>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="startDate">Start Date</label>
+        <input cFormControl type="date" formControlName="startDate"/>
+      </c-col>
+    </form>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="closeModal($event)" cButton color="secondary"(click)="showModal()">Cancel</button>
+    <button cButton btn-sm color="primary" (click)="submit()">Submit</button>
+  </c-modal-footer>
+</c-modal>
