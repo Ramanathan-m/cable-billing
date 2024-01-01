@@ -15,16 +15,25 @@
                             <th class="text-center">Mobile Number</th>
                             <th class="text-center">Plans </th>
                             <th class="text-center">Start Date</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let c of customer; index as i">
+                        <tr *ngFor="let customer of customers; index as i">
                             <td class="text-center" >{{ i+1 }}</td>
-                            <td class="text-center">{{ c.customerType }}</td>
-                            <td class="text-center">{{ c.accountNumber }}</td>
-                            <td class="text-center">{{ c.mobileNumber }}</td>
-                            <td class="text-center">{{ c.plans }}</td>
-                            <td class="text-center">{{ c.startDate |  date: 'dd/MM/yyyy' }}</td>
+                            <td class="text-center">{{ customer.customerType }}</td>
+                            <td class="text-center">{{ customer.accountNumber }}</td>
+                            <td class="text-center">{{ customer.mobileNumber }}</td>
+                            <td class="text-center">{{ customer.plans }}</td>
+                            <td class="text-center">{{ customer.startDate |  date: 'dd/MM/yyyy' }}</td>
+                            <td class="text-center">
+                              <div class="d-grid gap-2 d-md-flex justify-content-end">
+                                <button cButton size="sm" color="info"(click)="showModal(customer)">Edit</button>
+                                <button cButton size="sm" color="warning">History</button> 
+                                <button cButton size="sm" color="success" (click)="loadpaycomponent()">Pay</button>
+                                <app-pay *ngIf="loadchildcomponent"></app-pay>
+                              </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -33,44 +42,16 @@
     </c-col>
 </c-row>
 <!-- modal -->
-
 <c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="closeModal($event)">
   <c-modal-header>
     <h5 cModalTitle>Add Customer</h5>
     <button (click)="showModal()" cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
-    <form cForm class="row g-3" [formGroup]="customerForm">
-      <c-col [md]="6">
-        <label cLabel for="customerType" cFormControl>Customer Type</label>
-        <select (change)="updatePlans($event)" cSelect formControlName="customerType">
-          <option value="">--Select--</option>
-          <option value="{{ct['id']}}" *ngFor="let ct of customerType">{{ct['name']}}</option>
-        </select>
-      </c-col>
-      <c-col [md]="6">
-        <label cLabel for="accountnumber">Account Number</label>
-        <input cFormControl type="text"  formControlName="accountNumber" placeholder="Enter the Account Number"/>
-      </c-col>
-      <c-col [md]="12">   
-        <label cFormControl cLabel for="plans">Plans</label>
-        <select cSelect formControlName="plans">
-          <option value="">--Select--</option>
-          <option value="{{fp['id']}}" *ngFor="let fp of filterPlans">{{fp['name']}}</option>
-        </select>
-      </c-col>
-      <c-col [md]="6">
-        <label cLabel for="mobileNumber">Mobile Nmber</label>
-        <input cFormControl type="text" placeholder="Enter the Mobile Number"  formControlName="mobileNumber" placeholder="Enter the Mobile Number"/>
-      </c-col>
-      <c-col [md]="6">
-        <label cLabel for="startDate">Start Date</label>
-        <input cFormControl type="date" formControlName="startDate"/>
-      </c-col>
-    </form>
+    <app-addcustomer></app-addcustomer>
   </c-modal-body>
   <c-modal-footer>
     <button (click)="closeModal($event)" cButton color="secondary"(click)="showModal()">Cancel</button>
-    <button cButton btn-sm color="primary" (click)="submit()">Submit</button>
+    <button cButton btn-sm color="primary" (click)="customerSubmit()">Submit</button>
   </c-modal-footer>
 </c-modal>

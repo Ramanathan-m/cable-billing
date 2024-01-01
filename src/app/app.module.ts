@@ -41,6 +41,10 @@ import { BillingModule } from "./menu/billing/billing.module";
 import {  CustomerModule } from "./menu/customer/customer.module";
 import { ReportsModule } from "./menu/reports/reports.module";
 import { PagesModule } from "./views/pages/pages.module";
+import { PlansModule } from "./menu/plans/plans.module";
+import { AddcustomerModule } from './menu/addcustomer/addcustomer.module';
+import {PayModule  } from "./menu/pay/pay.module";
+
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -79,7 +83,10 @@ const APP_CONTAINERS = [
     BillingModule,
     CustomerModule,
     ReportsModule,
-    PagesModule
+    PagesModule,
+    PlansModule,
+    AddcustomerModule,
+    PayModule
   ],
   providers: [
     {

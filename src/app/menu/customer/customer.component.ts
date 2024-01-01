@@ -6,63 +6,71 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.scss'
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent {
 
-  customer:any[]=[
+  private _customers: any[] = [
     {
-      "customerType":"test",
-      "accountNumber":"test",
-      "mobileNumber":"test",
-      "plans":"test",
-      "startDate":"test",
+      "customerType": "test",
+      "accountNumber": "test",
+      "mobileNumber": "test",
+      "plans": "test",
+      "startDate": "test",
     }
-  ]
+  ];
+  public get customers(): any[] {
+    return this._customers;
+  }
+  public set customers(value: any[]) {
+    this._customers = value;
+  }
+
   public visible = false;
-  showModal() {
+  showModal(test?:customer) {
     this.visible = !this.visible;
-    this.customerForm.reset();
+    if(test){
+      this.customerForm.patchValue(test);
+      }else{
+        this.customerForm.reset()
+      }
+    // this.customerForm.reset();
   }
   closeModal(event: any) {
     this.visible = event;
   }
 
  customerForm!:FormGroup;
-  ngOnInit(): void {
-    this.customerForm=new FormGroup({
-      customerType:new FormControl('',Validators.required),
-      accountNumber: new FormControl('',Validators.required),
-      mobileNumber: new FormControl('',Validators.required),
-      plans: new FormControl('',Validators.required),
-      startDate: new FormControl('',Validators.required)
-    });
-  }
-  submit(){
-    debugger;
+
+  customerSubmit(){
+    // debugger;
     const data = this.customerForm.getRawValue();
-    this.customer.push(data);
+    const _data = this._customers.find(x => x.accountNumber == data.accountNumber)
+    if (_data) {
+      _data.customerType = data.customerType
+      _data.accountNumber = data.accountNumber
+      _data.mobileNumber = data.mobileNumber
+      _data.plans = data.plans
+      _data.startDate = data.startDate
+    }else{
+    this._customers.push(data);
     this.visible=false;
-    this.customerForm.reset();
+    // this.customerForm.reset();
+    }
   }
-
-  customerType = [
-    { id: 1, name: "Cable Customers" },
-    { id: 2, name: "BSNL Customers" },
-  ];
-  plans:any=[
-    {id: 1 , name: "001-cable-200" , c_id: 1},
-    {id: 2 , name: "002-cable-300" , c_id: 1},
-    {id: 3 , name: "003-BSNL-600" , c_id: 2},
-    {id: 4 , name: "004-BSNL-700" , c_id: 2}
-  ];
-  filterPlans=this.plans;
-
-  updatePlans(e:any){
-    debugger;
-    let cID = e.target.value;
-    this.filterPlans = this.plans.filter((f: { [x: string]: any; })=> f['c_id']==cID);
-
+  loadComponent:boolean=false;
+  loadMyChildComponent(){
+   this.loadComponent=true;
   }
-
+  loadchildcomponent:boolean=false
+  loadpaycomponent(){
+    this.loadchildcomponent = true;
+  }
+}
+export interface customer{
+  customerType: any,
+  accountNumber: number,
+  mobileNumber: number,
+  plans:any,
+  startDate:Date 
 }
 
 

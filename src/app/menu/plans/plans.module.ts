@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BillingRoutingModule } from './billing-routing.module';
-import { BillingComponent } from './billing.component';
+
+import { PlansRoutingModule } from './plans-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, CardModule, FormModule, GridModule, ModalModule, TableModule } from '@coreui/angular';
+import { PlansComponent } from "./plans.component";
 
 
 @NgModule({
-  declarations: [BillingComponent],
+  declarations: [PlansComponent],
   imports: [
     CommonModule,
-    BillingRoutingModule,
+    PlansRoutingModule,
     ReactiveFormsModule,
-    GridModule,
-    ButtonModule,
-    TableModule,
     ModalModule,
-    CardModule,
-    FormModule
-  ],
-  exports: [BillingComponent ]
+    GridModule,
+    TableModule,
+    FormModule,
+    ButtonModule,
+    CardModule
+    
+    
+  ]
 })
-export class BillingModule { }
+export class PlansModule { }

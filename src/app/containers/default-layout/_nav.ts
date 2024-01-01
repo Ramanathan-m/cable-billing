@@ -12,32 +12,45 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Customer Menu'
+    name: 'Master'
   },
   {
     name: 'Customer',
     url: '/customer',
     iconComponent: { name: 'cil-drop' }
   },
+  // {
+  //   title: true,
+  //   name: 'Plan Menu'
+  // },
   {
-    name: 'Billing Menu',
-    title: true
+    name: 'Plans',
+    url: '/plans',
+    iconComponent: { name: 'cil-puzzle' }
   },
-  {
-    name: 'Billing',
-    url: '/billing',
-    iconComponent: { name: 'cil-puzzle' },
-  },
+  // {
+  //   name: 'Billing Menu',
+  //   title: true
+  // },
+  // {
+  //   name: 'Billing',
+  //   url: '/billing',
+  //   iconComponent: { name: 'cil-puzzle' },
+  // },
 
-  {
-    title: true,
-    name: 'Reports Menu'
-  },
+  // {
+  //   title: true,
+  //   name: 'Reports Menu'
+  // },
   {
     name: 'Reports',
     url: '/reports',
     iconComponent: { name: 'cil-star' },
  },
+   {
+    title: true,
+    name: 'Reference'
+  },
 
 {
     name: 'RBM Research Center',

@@ -1,0 +1,75 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+            <c-card-header>
+                <strong>Plans</strong>
+                <button (click)="toggleLiveDemo()" cButton color="success">Add Plan</button>
+
+            </c-card-header>
+            <c-card-body>
+                <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+                    <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let plan  of plans;index as i">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{plan.code}}</td>
+                        <td>{{plan.name}}</td>
+                        <td>{{plan.description}}</td>
+                        <td>{{plan.amount}}</td>
+                        <td>
+                            <div class="d-grip gap-2 d-md-flex">
+                        <button cButton color="warning" (click)="toggleLiveDemo(plan)">Edit</button> |
+                        <button cButton color="danger">Delete</button>
+                    </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
+
+<!-- modal -->
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+    <c-modal-header>
+        <h5 cModalTitle>Add Plan</h5>
+        <button (click)="toggleLiveDemo()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+        <form cForm [formGroup]="planFrom">
+        <c-row>
+        <c-col [md]="6">
+            <label cLabel for="Code">Code</label>
+            <input cFormControl  type="text" formControlName="code" placeholder="Enter the Code"/>
+        </c-col>
+        <c-col [md]="6">
+            <label cLabel for="Name">Name</label>
+            <input cFormControl type="text" formControlName="name" placeholder="Enter the Name"/>
+        </c-col>
+        <c-col [md]="6">
+            <label cLabel for="Description">Description</label>
+            <input cFormControl  type="text" formControlName="description" placeholder="Enter the Description"/>
+        </c-col>
+        <c-col [md]="6">
+            <label cLabel for="Amount">Amount</label>
+            <input cFormControl  type="text" formControlName="amount" placeholder="Enter the Amount"/>
+        </c-col>
+        </c-row>
+        </form>
+    </c-modal-body>
+    <c-modal-footer>
+        <button (click)="toggleLiveDemo()" cButton color="secondary">Close</button>
+        <button cButton color="primary" (click)="planSubmit()">Submit</button>
+    </c-modal-footer>
+</c-modal>
+
