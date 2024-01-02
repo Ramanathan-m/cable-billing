@@ -1,0 +1,35 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+            <c-callout  color="primary">
+                <strong>SMS</strong>
+            </c-callout>
+            <c-card-body>
+                <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+                    <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Account Number</th>
+                        <th scope="col">Mobile Number</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Last date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let sms  of sms;index as i">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{sms.accountNumber}}</td>
+                        <td>{{sms.mobileNumber}}</td>
+                        <td>{{sms.customerName}}</td>
+                        <td>{{sms.plan}}</td>
+                        <td>{{sms.lastDate}}</td>
+                        <td><button cButton size="sm" type="submit" color="warning">Send SMS</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>

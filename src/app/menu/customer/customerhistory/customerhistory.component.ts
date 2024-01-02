@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-addcustomer',
-  templateUrl: './addcustomer.component.html',
-  styleUrl: './addcustomer.component.scss'
+  selector: 'app-customerhistory',
+  templateUrl: './customerhistory.component.html',
+  styleUrl: './customerhistory.component.scss'
 })
-export class AddcustomerComponent implements OnInit{
+export class CustomerhistoryComponent {
   customerForm!:FormGroup;
   ngOnInit(): void {
     this.customerForm=new FormGroup({
@@ -17,6 +17,7 @@ export class AddcustomerComponent implements OnInit{
       startDate: new FormControl('',Validators.required)
     });
   }
+  
   customerType = [
     { id: 1, name: "Cable Customers" },
     { id: 2, name: "BSNL Customers" },

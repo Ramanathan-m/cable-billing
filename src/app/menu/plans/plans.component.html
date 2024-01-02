@@ -3,7 +3,7 @@
         <c-card class="mb-4">
             <c-card-header>
                 <strong>Plans</strong>
-                <button (click)="toggleLiveDemo()" cButton color="success">Add Plan</button>
+                <button (click)="toggleLiveDemo()" cButton color="success" size="sm" class="offset-10">Add Plan</button>
 
             </c-card-header>
             <c-card-body>
@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="col">S.No</th>
                         <th scope="col">Code</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Description</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Action</th>
@@ -22,13 +22,13 @@
                     <tr>
                         <td>{{i+1}}</td>
                         <td>{{plan.code}}</td>
-                        <td>{{plan.name}}</td>
-                        <td>{{plan.description}}</td>
+                        <td>{{plan.customerType.descriptions}}</td>
+                        <td>{{plan.descriptions}}</td>
                         <td>{{plan.amount}}</td>
                         <td>
                             <div class="d-grip gap-2 d-md-flex">
-                        <button cButton color="warning" (click)="toggleLiveDemo(plan)">Edit</button> |
-                        <button cButton color="danger">Delete</button>
+                        <button cButton size="sm" color="warning" (click)="toggleLiveDemo(plan)">Edit</button> 
+                        <button cButton size="sm" color="danger">Delete</button>
                     </div>
                         </td>
                     </tr>
@@ -42,7 +42,7 @@
 <!-- modal -->
 <c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
     <c-modal-header>
-        <h5 cModalTitle>Add Plan</h5>
+        <h5 cModalTitle >Add Plan</h5>
         <button (click)="toggleLiveDemo()" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>

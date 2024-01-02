@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Plan } from 'src/app/models/customer-model';
+import { CustomerService } from '../customer/customer.service';
 
 @Component({
   selector: 'app-plans',
@@ -7,23 +9,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './plans.component.scss'
 })
 export class PlansComponent {
-  private _plans: plan[]=[];
-  public get plans(): plan[] {
-    return this._plans;
+ 
+  constructor(private customerService:CustomerService)
+  {}
+  public get plans(): Plan[] {
+    return this.customerService.plans;
   }
-  public set plans(value: plan[]) {
-    this._plans = value;
-  }
+  
   public visible = false;
 
-  toggleLiveDemo(test?:plan) {
+  toggleLiveDemo(test?:Plan) {
     debugger;
-    this.visible = true;
-if(test){
-  this.planFrom.patchValue(test);
-  }else{
-    this.planFrom.reset()
-  }
+    this.visible =!this.visible;
+    if(test){
+     this.planFrom.patchValue(test);
+    }else{
+     this.planFrom.reset()
+    }
   }
 
   handleLiveDemoChange(event: any) {
@@ -44,19 +46,14 @@ if(test){
     let _data = this.plans.find(x => x.code == data.code);
     if (_data) {
       _data.code = data.code;
-      _data.name = data.name;
-      _data.description = data.description;
+      _data.descriptions = data.description;
       _data.amount = data.amount;
+      this.visible = false;
     }else{
     this.plans.push(data);
     this.visible = false;
-    // this.planFrom.reset();
+    this.planFrom.reset();
     }
   }
 }
-export interface plan {
-  code: any;
-  name: string;
-  description: string;
-  amount: any;
-}
+

@@ -19,29 +19,11 @@ export const navItems: INavData[] = [
     url: '/customer',
     iconComponent: { name: 'cil-drop' }
   },
-  // {
-  //   title: true,
-  //   name: 'Plan Menu'
-  // },
   {
     name: 'Plans',
     url: '/plans',
     iconComponent: { name: 'cil-puzzle' }
   },
-  // {
-  //   name: 'Billing Menu',
-  //   title: true
-  // },
-  // {
-  //   name: 'Billing',
-  //   url: '/billing',
-  //   iconComponent: { name: 'cil-puzzle' },
-  // },
-
-  // {
-  //   title: true,
-  //   name: 'Reports Menu'
-  // },
   {
     name: 'Reports',
     url: '/reports',
@@ -49,12 +31,21 @@ export const navItems: INavData[] = [
  },
    {
     title: true,
-    name: 'Reference'
+    name: 'Notification'
+  },
+  {
+    name: 'SMS ',
+    url: '/sms',
+    iconComponent: { name: 'cil-puzzle' }
+  },
+   {
+    title: true,
+    name: 'Help'
   },
 
 {
-    name: 'RBM Research Center',
-    url: 'https://coreui.io/product/angular-dashboard-template/',
+    name: 'Contact Details',
+    url: '/404',
     iconComponent: { name: 'cil-layers' },
     attributes: { target: '_blank' }
   }

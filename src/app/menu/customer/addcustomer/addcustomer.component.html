@@ -1,0 +1,31 @@
+<form cForm class="row g-3" [formGroup]="customerForm">
+    <c-col [md]="4">
+      <label cLabel for="accountnumber">Account Number</label>
+      <input cFormControl type="text"  formControlName="accountNumber" placeholder="Enter the Account Number"/>
+    </c-col>
+    <c-col [md]="4">
+      <label cLabel for="mobileNumber">Mobile Nmber</label>
+      <input cFormControl type="text" placeholder="Enter the Mobile Number"  formControlName="mobileNumber" placeholder="Enter the Mobile Number"/>
+    </c-col>
+    <c-col [md]="4">
+      <label cLabel for="active">Active</label>
+      <select cSelect formControlName="plans">
+        <option value="{{active['id']}}" *ngFor="let active of isActive">{{active['name']}}</option>
+      </select>    </c-col>
+    <c-col [md]="4">
+      <label cLabel for="customerType" cFormControl>Customer Type</label>
+      <select (change)="updatePlans($event)" cSelect formControlName="customerType">
+        <option value="{{ct['id']}}" *ngFor="let ct of customerType">{{ct.descriptions}}</option>
+      </select>
+    </c-col>
+    <c-col [md]="4">   
+      <label cFormControl cLabel for="plans">Plans</label>
+      <select cSelect formControlName="plans">
+        <option *ngFor="let fp of filterPlans" [ngValue]="fp" >{{fp.descriptions}}</option>
+      </select>
+    </c-col>
+    <c-col [md]="4">
+      <label cLabel for="startDate">Start Date</label>
+      <input cFormControl type="date" formControlName="startDate"/>
+    </c-col>
+  </form>

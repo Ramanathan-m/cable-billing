@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { cilArrowRight, cilChartPie } from '@coreui/icons';
 
 @Component({
   selector: 'app-reports',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './reports.component.scss'
 })
 export class ReportsComponent {
- 
+icons = { cilChartPie, cilArrowRight}
 }

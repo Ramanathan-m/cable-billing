@@ -45,6 +45,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./menu/reports/reports.module').then((m) => m.ReportsModule)
       },
+      {
+        path: 'sms',
+        loadChildren: () =>
+          import('./menu/sms/sms.module').then((m) => m.SmsModule)
+      },
      
     ]
   },

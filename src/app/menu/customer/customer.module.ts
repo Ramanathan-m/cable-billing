@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from "./customer.component";
-import { ButtonModule, CardModule, FormModule, GridModule, ModalModule, TableModule } from '@coreui/angular';
+import { ButtonModule, CalloutModule, CardModule, FormModule, GridModule, ModalModule, TableModule } from '@coreui/angular';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BillingModule } from '../billing/billing.module';
-import { AddcustomerModule } from "../addcustomer/addcustomer.module";
-import { PayModule } from '../pay/pay.module';
+import {AddcustomerComponent} from "./addcustomer/addcustomer.component";
+import { CustomerhistoryComponent } from "./customerhistory/customerhistory.component";
+import { PayComponent } from "./pay/pay.component";
 
 @NgModule({
-    declarations: [CustomerComponent],
+    declarations: [CustomerComponent,AddcustomerComponent,CustomerhistoryComponent,PayComponent],
     imports: [
         CommonModule,
         CustomerRoutingModule,
@@ -21,11 +22,10 @@ import { PayModule } from '../pay/pay.module';
         ReactiveFormsModule,
         FormsModule,
         FormModule,
-        BillingModule,
-        AddcustomerModule,
-        PayModule
-        
-    ]
+        CalloutModule
+
+    ],
+    exports:[PayComponent]
 })
 export class CustomerModule { 
 

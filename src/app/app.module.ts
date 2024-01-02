@@ -38,12 +38,11 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { BillingModule } from "./menu/billing/billing.module";
-import {  CustomerModule } from "./menu/customer/customer.module";
 import { ReportsModule } from "./menu/reports/reports.module";
 import { PagesModule } from "./views/pages/pages.module";
 import { PlansModule } from "./menu/plans/plans.module";
-import { AddcustomerModule } from './menu/addcustomer/addcustomer.module';
-import {PayModule  } from "./menu/pay/pay.module";
+import { CustomerModule } from './menu/customer/customer.module';
+import { SmsModule } from "./menu/sms/sms.module";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -71,7 +70,6 @@ const APP_CONTAINERS = [
     UtilitiesModule,
     ButtonGroupModule,
     ReactiveFormsModule,
-    SidebarModule,
     SharedModule,
     TabsModule,
     ListGroupModule,
@@ -81,12 +79,11 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     BillingModule,
-    CustomerModule,
     ReportsModule,
     PagesModule,
     PlansModule,
-    AddcustomerModule,
-    PayModule
+    CustomerModule,
+    SmsModule
   ],
   providers: [
     {

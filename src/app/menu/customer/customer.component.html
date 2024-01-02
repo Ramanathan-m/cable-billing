@@ -3,7 +3,7 @@
         <c-card class="mb-4">
             <c-card-header>
                 <strong>Customer <i class="fa-solid fa-user-group"></i> </strong>
-                <a class="btn btn-info btn-sm offset-9"(click)="showModal()" cButton >Add Customer</a>
+                <a class="btn btn-info btn-sm offset-9"(click)="showModal('customer')" cButton >Add Customer</a>
             </c-card-header>
             <c-card-body>
                 <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
@@ -24,14 +24,13 @@
                             <td class="text-center">{{ customer.customerType }}</td>
                             <td class="text-center">{{ customer.accountNumber }}</td>
                             <td class="text-center">{{ customer.mobileNumber }}</td>
-                            <td class="text-center">{{ customer.plans }}</td>
+                            <td class="text-center">{{ customer.customerPlan.descriptions }}</td>
                             <td class="text-center">{{ customer.startDate |  date: 'dd/MM/yyyy' }}</td>
                             <td class="text-center">
                               <div class="d-grid gap-2 d-md-flex justify-content-end">
-                                <button cButton size="sm" color="info"(click)="showModal(customer)">Edit</button>
-                                <button cButton size="sm" color="warning">History</button> 
-                                <button cButton size="sm" color="success" (click)="loadpaycomponent()">Pay</button>
-                                <app-pay *ngIf="loadchildcomponent"></app-pay>
+                                <button cButton size="sm" color="info"(click)="showModal('customer')">Edit</button>
+                                <button cButton size="sm" color="warning"(click)="showModal('history')">History</button> 
+                                <button cButton size="sm" color="success"(click)="showModal('pay')" >Pay</button>
                               </div>
                             </td>
                         </tr>
@@ -42,16 +41,20 @@
     </c-col>
 </c-row>
 <!-- modal -->
-<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="closeModal($event)">
+<c-modal size="lg" id="liveDemoModal" [visible]="visible" (visibleChange)="closeModal($event)">
   <c-modal-header>
     <h5 cModalTitle>Add Customer</h5>
     <button (click)="showModal()" cButtonClose></button>
   </c-modal-header>
-  <c-modal-body>
-    <app-addcustomer></app-addcustomer>
+  <c-modal-body [ngSwitch]="iscomp">
+    <app-addcustomer  *ngSwitchCase="'customer'"></app-addcustomer>
+    
+    <app-customerhistory *ngSwitchCase="'history'"></app-customerhistory>
+    <app-pay *ngSwitchCase="'pay'"></app-pay> 
   </c-modal-body>
   <c-modal-footer>
     <button (click)="closeModal($event)" cButton color="secondary"(click)="showModal()">Cancel</button>
     <button cButton btn-sm color="primary" (click)="customerSubmit()">Submit</button>
   </c-modal-footer>
 </c-modal>
+

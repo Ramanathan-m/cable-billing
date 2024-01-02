@@ -1,1 +1,65 @@
-test
+<c-card>
+    <c-card-header>
+        <strong>Pay</strong>
+    </c-card-header>
+    <c-card-body>
+        <c-row>
+            <c-col [md]="6">
+                <c-callout color="primary">
+                    <strong> Account Number</strong>:test
+                </c-callout>
+            </c-col>
+            <c-col [md]="6">
+                <c-callout color="secondary">
+                    <strong> Customer Name</strong>:test
+                </c-callout>  
+            </c-col>
+            <c-col [md]="6">
+                <c-callout color="success">
+                    <strong> plan </strong>:test
+                </c-callout>  
+            </c-col>
+            <c-col [md]="6">
+                <c-callout color="danger">
+                    <strong>  mobile Number </strong>:test
+                </c-callout>  
+            </c-col>
+            <c-col [md]="6">
+                <c-callout color="warning">
+                    <strong> Last Payment </strong>:test
+                </c-callout>  
+            </c-col>
+            <c-col [md]="6">  
+                <c-callout color="info">
+                    <strong>Due Amount</strong>:test
+                </c-callout> 
+            </c-col>
+            <c-col xs="auto" class="offset-6">
+                <label cLabel="col"> Amount </label>
+            </c-col>
+            <c-col xs="auto">
+                <input cFormControl type="text">
+            </c-col><br><br>
+            <c-col xs="auto" class="offset-6">
+                <label cLabel="col"> Balance </label>
+            </c-col>
+            <c-col xs="auto">
+                <input cFormControl type="text" readonly>
+            </c-col>
+        </c-row>
+    </c-card-body>
+</c-card>
+<!-- <c-row>    
+<c-col lg="6" xs="12">
+<c-widget-stat-f
+[title]="'Widget Title'"
+class="mb-3"
+color="warning"
+value="89.9%"
+>
+<ng-template cTemplateId="widgetIconTemplate">
+<svg [cIcon]="icons.cilChartPie" size="xl" width="24"></svg>
+</ng-template>
+</c-widget-stat-f>
+</c-col>
+</c-row> -->
